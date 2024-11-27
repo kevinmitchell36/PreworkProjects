@@ -38,7 +38,3 @@ while true
     puts "Miss..."
   end
 end
-
-
-
-
