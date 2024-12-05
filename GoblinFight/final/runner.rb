@@ -1,7 +1,11 @@
-require 'monster'
-require 'hero'
+require_relative 'monster'
+require_relative 'hero'
+require_relative 'game_board'
 
-warrior = Hero.new("Balthor", "warrior", "sword", "fireball", 17)
-puts "The #{warrior.vocation} #{warrior.name} swings their might #{warrior.weapon1} at the monster and rolls a #{warrior.attack}"
-p warrior
+
+new_game = GameBoard.new
+
+new_game.reset_map
+new_game.place_character
+new_game.print_map
 

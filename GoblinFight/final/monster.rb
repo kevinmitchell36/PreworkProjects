@@ -24,8 +24,4 @@ class Monster
 
 end
 
-goblin = Monster.new("goblin", "spear", "magic bolt", 10)
-puts "The #{goblin.creature_type} thrusts his #{goblin.weapon1} at you and rolls a #{goblin.attack}"
-p goblin.weapon1
-p goblin.attack
-p goblin.weapon1_damage
+
