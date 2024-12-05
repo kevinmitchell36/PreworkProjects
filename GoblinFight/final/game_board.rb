@@ -1,6 +1,7 @@
 class GameBoard
   
-  def initialize
+  def initialize(character)
+    @character = character
     @board = [
       ["╔","══","══","══","══","══","══","══","══","══","══","══","══","╗"],
       ["║","¤ ","▒ ","¤ ","¤ ","▒ ","¤ ","¤ ","¤ ","▒ ","¤ ","¤ ","¤ ","║"],
@@ -12,26 +13,30 @@ class GameBoard
       ["║","¤ ","▒ ","¤ ","¤ ","¤ ","¤ ","¤ ","¤ ","¤ ","▒ ","🍪","¤ ","║"],
       ["╚","══","══","══","══","══","══","══","══","══","══","══","══","╝"]
     ]  
-    @current_square = [1,1]
-    @presenting_map
+    @current_square = [1,1]  
+    @current_board
   end
 
-  def xerox_array(array) # this is to copy the array for animation purposes
-    duplicate_array = array.dup
-    duplicate_array.map! { |element| element.dup }
+  def current_square
+    return @current_square
+  end
+
+  def copy_row(row) # this is to copy the row for animation purposes
+    duplicate_row = row.dup
+    duplicate_row.map! { |cell| cell.dup }
   end
   
-  def reset_map # this works with deep_dup (xerox_array?) to create @presenting_map, a copy of @map
+  def reset_map # this works with copy row to create @current_board, a copy of @board
     duplicate_array = @board.dup
-    @presenting_map = duplicate_array.map! { |element| xerox_array(element) }
+    @current_board = duplicate_array.map! { |row| copy_row(row) }
   end
   
   def place_character
-    @presenting_map[@current_square[0]][@current_square[1]] = "🐻"
+    @current_board[@current_square[0]][@current_square[1]] = @character
   end
   
   def print_map
-    @presenting_map.each do |row|
+    @current_board.each do |row|
       puts row.join("")
     end
   end
