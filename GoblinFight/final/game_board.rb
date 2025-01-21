@@ -1,7 +1,6 @@
 class GameBoard
   
-  def initialize(character)
-    @character = character
+  def initialize()
     @board = [
       ["╔","══","══","══","══","══","══","══","══","══","══","══","══","╗"],
       ["║","¤ ","▒ ","¤ ","¤ ","▒ ","¤ ","¤ ","¤ ","▒ ","¤ ","¤ ","¤ ","║"],
@@ -13,12 +12,8 @@ class GameBoard
       ["║","¤ ","▒ ","¤ ","¤ ","¤ ","¤ ","¤ ","¤ ","¤ ","▒ ","🍪","¤ ","║"],
       ["╚","══","══","══","══","══","══","══","══","══","══","══","══","╝"]
     ]  
-    @current_square = [1,1]  
+    @current_square = [1,1]
     @current_board
-  end
-
-  def current_square
-    return @current_square
   end
 
   def copy_row(row) # this is to copy the row for animation purposes
@@ -32,13 +27,29 @@ class GameBoard
   end
   
   def place_character
-    @current_board[@current_square[0]][@current_square[1]] = @character
+    @current_board[@current_square[0]][@current_square[1]] = "M "
   end
   
   def print_map
     @current_board.each do |row|
       puts row.join("")
     end
+  end
+
+  def move_up
+    @current_square[0] -= 1
+  end
+  
+  def move_down
+    @current_square[0] += 1 
+  end
+  
+  def move_left
+    @current_square[1] -= 1 
+  end
+  
+  def move_right
+    @current_square[1] += 1 
   end
 
 end

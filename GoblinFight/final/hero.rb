@@ -1,13 +1,12 @@
 class Hero
   
-  attr_accessor :name, :vocation, :weapon1, :weapon2, :armor_rating
+  attr_accessor :name, :weapon1, :armor_rating, :hp
 
-  def initialize(name, vocation, weapon1, weapon2, armor_rating)
+  def initialize(name, weapon1, armor_rating)
     @name = name
-    @vocation = vocation
     @weapon1 = weapon1
-    @weapon2 = weapon2
     @armor_rating = armor_rating
+    @hp = 10
   end
 
   def attack
@@ -15,15 +14,11 @@ class Hero
     return attack_roll
   end
 
-  def weapon1_damage
+  def damage
     damage_roll = rand(1..6)
     return damage_roll
   end
 
-  def weapon2_damage
-    damage_roll = rand(2..6)
-    return damage_roll
-  end
 
 end
 

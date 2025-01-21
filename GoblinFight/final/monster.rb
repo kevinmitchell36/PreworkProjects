@@ -1,10 +1,10 @@
 class Monster
-  attr_accessor :creature_type, :weapon1, :weapon2, :armor_rating
-  def initialize(creature_type, weapon1, weapon2, armor_rating)
-    @creature_type = creature_type
+  attr_accessor :name, :weapon1, :armor_rating, :hp
+  def initialize(name, weapon1, armor_rating)
+    @name = name
     @weapon1 = weapon1
-    @weapon2 = weapon2
     @armor_rating = armor_rating
+    @hp = 10
   end
 
   def attack
@@ -12,15 +12,12 @@ class Monster
     return attack_roll
   end
 
-  def weapon1_damage
+  def damage
     damage_roll = rand(1..6)
     return damage_roll
   end
 
-  def weapon2_damage
-    damage_roll = rand(2..6)
-    return damage_roll
-  end
+
 
 end
 
