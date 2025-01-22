@@ -16,6 +16,11 @@ class GameBoard
     @current_board
   end
 
+  def reset_screen # used for reseting the terminal screen
+    print "\e[2J"
+    print "\e[H"
+  end
+  
   def copy_row(row) # this is to copy the row for animation purposes
     duplicate_row = row.dup
     duplicate_row.map! { |cell| cell.dup }

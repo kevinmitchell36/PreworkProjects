@@ -1,10 +1,5 @@
 class Encounter
   
-  def initialize(hero, monster)
-    @hero = hero
-    @monster = monster
-  end
-
   def check_for_death(defender)
     if defender.hp <= 0
       puts "#{defender.name} dead!"
