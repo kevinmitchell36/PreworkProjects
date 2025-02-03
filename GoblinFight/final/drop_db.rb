@@ -1,0 +1,3 @@
+
+
+File.delete("./game.db")
