@@ -26,12 +26,28 @@ while true
     break
   elsif input == "s" 
     current_game.move_down
+    unless current_game.moved_to_a_valid_square?
+      current_game.move_up
+    end
   elsif input == "w"
     current_game.move_up
+    unless current_game.moved_to_a_valid_square?
+      current_game.move_down
+    end
   elsif input == "a"
     current_game.move_left
+    unless current_game.moved_to_a_valid_square?
+      current_game.move_right
+    end
   elsif input == "d"
     current_game.move_right
+    unless current_game.moved_to_a_valid_square?
+      current_game.move_left
+    end
+  end
+  if current_game.win?
+    puts "You won!!!!"
+    break
   end
   if run_game.encounter_chance
     run_game.generate_monster(player_char)

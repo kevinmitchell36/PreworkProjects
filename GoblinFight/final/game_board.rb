@@ -57,5 +57,32 @@ class GameBoard
     @current_square[1] += 1 
   end
 
+  def moved_to_a_valid_square?
+    puts "executed in moved..."
+    new_square = @current_board[@current_square[0]][@current_square[1]]
+  
+    if new_square == "▒ "
+      return false
+    elsif new_square == "╔"
+      return false
+    elsif new_square == "══"
+      return false
+    elsif new_square == "╗"
+      return false
+    elsif new_square == "╝"
+      return false
+    elsif new_square == "╚"
+      return false
+    elsif new_square == "║"
+      return false
+    else
+      return true
+    end
+  end
+
+  def win?
+    @current_board[@current_square[0]][@current_square[1]] == "🍪"
+  end
+
 end
 
