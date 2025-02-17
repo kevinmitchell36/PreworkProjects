@@ -1,10 +1,13 @@
 class Monster
-  attr_accessor :name, :weapon1, :armor_rating, :hp
+
+  attr_accessor :name, :weapon1, :armor_rating, :hp, :current_hp
+  
   def initialize(name, weapon1, armor_rating)
     @name = name
     @weapon1 = weapon1
     @armor_rating = armor_rating
     @hp = 10
+    @current_hp = 10
   end
 
   def attack

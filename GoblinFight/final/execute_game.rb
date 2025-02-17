@@ -2,14 +2,13 @@ require_relative 'monster'
 require_relative 'hero'
 require_relative 'game_board'
 require_relative 'encounter'
-require_relative 'runner'
+require_relative 'combat'
 
 current_game = GameBoard.new()
-run_game = Runner.new()
 current_game.reset_screen
 print "What is your name, hero? "
 character_name = gets.chomp
-player_char = Hero.new(character_name, "sword", 10)
+hero = Hero.new(character_name, "sword", 10)
 
 
 while true
@@ -17,7 +16,7 @@ while true
   current_game.reset_map
   current_game.place_character
   current_game.print_map
-  player_char.hp = 10   # Player's hp resets after each move - add healing/rest option?
+  # player_char.hp = 10   # Player's hp resets after each move - add healing/rest option?
 
   puts "Enter a direction: w, a, s, d"
   puts "Type 'end' to stop the program"
@@ -49,7 +48,21 @@ while true
     puts "You won!!!!"
     break
   end
-  if run_game.encounter_chance
-    run_game.generate_monster(player_char)
+  encounter = Encounter.new()
+  if encounter.random_encounter
+    monster = Monster.new("Goblin", "sword", 10)
+    fight = Combat.new(hero, monster)
+    loser = fight.run_combat
+    if loser.name == monster.name
+      puts "#{monster.name} is dead!!"
+      print "Rest (r) or continue (c)?  "          # Currently players hp resets
+      post_encounter = gets.chomp.downcase
+      if post_encounter == "r"
+        hero.rest
+      end
+    else
+      puts "#{hero.name} is dead..."
+      break
+    end
   end
 end

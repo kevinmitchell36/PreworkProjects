@@ -58,7 +58,6 @@ class GameBoard
   end
 
   def moved_to_a_valid_square?
-    puts "executed in moved..."
     new_square = @current_board[@current_square[0]][@current_square[1]]
   
     if new_square == "▒ "

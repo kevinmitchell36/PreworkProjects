@@ -1,19 +1,15 @@
 class Encounter
   
-  def check_for_death(defender)
-    if defender.hp <= 0
-      puts "#{defender.name} dead!"
-      return true
+  def random_encounter
+    result = encounter_chance
+    if (result >= 1 && result <= 5)
+      @encounter = true
     end
   end
-  
-  def turn(attacker, defender)
-    if attacker.attack >= defender.armor_rating
-      puts "Hit!"
-      defender.hp = defender.hp - attacker.damage
-    else 
-      puts "Miss..."
-    end
+
+  def encounter_chance
+    chance = rand(1..20)
+    return chance
   end
 
 end
