@@ -21,7 +21,7 @@ class Hero
   end
 
   def heal
-    heal_amount = rand(1..10)
+    heal_amount = rand(1..3)
     @current_hp = @current_hp + heal_amount > 10 ? 10 : @current_hp + heal_amount
     return @current_hp
   end
@@ -31,7 +31,12 @@ class Hero
     return @current_hp
   end
 
-
+  def block
+    block_amount = rand(1..5)
+    @armor_rating = @armor_rating + block_amount
+    puts "Hero armor - #{@armor_rating}"
+    return @armor_rating
+  end
 
 end
 

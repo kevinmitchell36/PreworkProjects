@@ -52,17 +52,19 @@ while true
   if encounter.random_encounter
     monster = Monster.new("Goblin", "sword", 10)
     fight = Combat.new(hero, monster)
-    loser = fight.run_combat
-    if loser.name == monster.name
+    loser = fight.run_combat 
+    if loser.name == monster.name 
       puts "#{monster.name} is dead!!"
-      print "Rest (r) or continue (c)?  "          # Currently players hp resets
-      post_encounter = gets.chomp.downcase
-      if post_encounter == "r"
-        hero.rest
-      end
+    elsif loser.name == hero.name && hero.current_hp > 0
+      puts "You ran away..."
     else
       puts "#{hero.name} is dead..."
       break
+    end
+    print "Rest (r) or continue (c)?  "         
+    post_encounter = gets.chomp.downcase
+    if post_encounter == "r"
+      hero.rest
     end
   end
 end
