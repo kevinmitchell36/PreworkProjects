@@ -10,6 +10,11 @@ class Monster
     @current_hp = 10
   end
 
+  def initiative
+    initiative_roll = rand(1..10)
+    return initiative_roll
+  end
+
   def attack
     attack_roll = rand(1..20)
     return attack_roll
@@ -19,8 +24,6 @@ class Monster
     damage_roll = rand(1..6)
     return damage_roll
   end
-
-
 
 end
 

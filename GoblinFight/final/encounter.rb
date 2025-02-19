@@ -3,7 +3,7 @@ class Encounter
   def random_encounter
     result = encounter_chance
     if (result >= 1 && result <= 5)
-      @encounter = true
+      return true
     end
   end
 

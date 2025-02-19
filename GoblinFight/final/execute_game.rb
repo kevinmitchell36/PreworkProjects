@@ -8,15 +8,14 @@ current_game = GameBoard.new()
 current_game.reset_screen
 print "What is your name, hero? "
 character_name = gets.chomp
-hero = Hero.new(character_name, "sword", 10)
+hero = Hero.new(character_name, "sword", "spear", 10)
 
 
 while true
-  current_game.reset_screen    # work this into game after an encounter
+  current_game.reset_screen    
   current_game.reset_map
   current_game.place_character
   current_game.print_map
-  # player_char.hp = 10   # Player's hp resets after each move - add healing/rest option?
 
   puts "Enter a direction: w, a, s, d"
   puts "Type 'end' to stop the program"
@@ -51,6 +50,8 @@ while true
   encounter = Encounter.new()
   if encounter.random_encounter
     monster = Monster.new("Goblin", "sword", 10)
+    current_game.reset_screen
+    puts "A #{monster.name} jumps out at you!!!!"
     fight = Combat.new(hero, monster)
     loser = fight.run_combat 
     if loser.name == monster.name 
