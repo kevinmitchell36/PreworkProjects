@@ -12,12 +12,14 @@ class Combat
   def determine_initiative(round)
     first_actor = @hero.initiative >= @monster.initiative ? @hero : @monster
     puts "================= Round #{round} - #{first_actor.name} goes first ========================="
+    puts "Hero HP #{@hero.current_hp}/#{@hero.hp}                                        #{@monster.name.capitalize} HP #{@monster.current_hp}/#{@monster.hp}"
     return first_actor
   end
 
   def hero_turn
+    health_bar = "="
     puts
-    puts Rainbow("#{@hero.name}'s turn =======================").green 
+    puts Rainbow("#{@hero.name}'s turn HP: #{health_bar * @hero.current_hp}").green 
     puts "(ap) Sword (as) Spear"         
     puts "(b) Block"         
     puts "(h) Heal"         
@@ -29,21 +31,21 @@ class Combat
     attacker = @hero
     defender = @monster
     hero_action(attacker, defender, selection)
-    puts Rainbow("=============================================").green
+    puts Rainbow("HP: #{health_bar * @hero.current_hp}").green
     puts
     check_for_death(defender)
   end
 
   def monster_turn
+    health_bar = "~"
     puts
-    puts Rainbow("#{@monster.name}'s turn ~~~~~~~~~~~~~~~~~~~~~~").red.bright
+    puts Rainbow("#{@monster.name}'s turn HP: #{health_bar * @monster.current_hp}").red.bright
     attacker = @monster
     defender = @hero
     damage = attacker.damage
-    puts "Damage: #{damage}"
-    monster_attack(attacker, defender, damage)
-    @hero.armor_rating = 10           # This rests the hero armor rating if they blocked. Should be handled elswhere...
-    puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").red.bright
+    attack(attacker, defender, damage)
+    @hero.armor_rating = 10           # This resets the hero armor rating if they blocked. Should be handled elswhere...
+    puts Rainbow("HP: #{health_bar * @monster.current_hp}").red.bright
     puts
     check_for_death(defender)
   end
@@ -72,13 +74,13 @@ class Combat
 
   def primary_spell(attacker, defender, damage)
     defender.current_hp -= damage
-    puts "Spell hits!: #{defender.current_hp}/#{defender.hp}"
+    puts "Spell hits! #{damage} damage"
   end
   
-  def monster_attack(attacker, defender, damage)
+  def attack(attacker, defender, damage)
     if attacker.attack >= defender.armor_rating
       defender.current_hp -= damage
-      puts "Hit! #{defender.name}: #{defender.current_hp}/#{defender.hp}"
+      puts "Hit! #{attacker.name} does #{damage} damage"
     else 
       puts "Miss..."
     end
