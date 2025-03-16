@@ -1,7 +1,4 @@
-# DM flavored messages
-hero_death_messages = ["The hero is no more...", "Our hero is dead...", "The goblin runs the hero through..."]
 
-goblin_death_messages = ["The goblin dies by your blade!", "The goblin dies!", "You win, the goblin is no more!"]
 
 class Combatant 
   

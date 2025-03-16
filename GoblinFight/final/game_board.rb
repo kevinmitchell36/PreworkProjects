@@ -80,7 +80,7 @@ class GameBoard
   end
 
   def win?
-    @current_board[@current_square[0]][@current_square[1]] == "🍪"
+    @current_board[@current_square[0]][@current_square[1]] == "🏆"
   end
 
 end
