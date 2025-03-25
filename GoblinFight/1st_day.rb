@@ -5,7 +5,7 @@ hero_damage = 5
 
 # Goblin stats
 goblin_hp = 6
-gobling_damage = 1
+goblin_damage = 1
 
 # Hero's turn
 # If the hit is a success...
@@ -16,7 +16,7 @@ puts goblin_hp
 
 # Goblin's turn 
 # If the hit is a success...
-hero_hp = hero_hp - gobling_damage
+hero_hp = hero_hp - goblin_damage
 
 # Print results
 puts hero_hp

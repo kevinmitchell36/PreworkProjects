@@ -1,49 +1,38 @@
-
-
-class Combatant 
+class Combatant
   
-  def initialize(role, hp, armor)
-    @role = role
-    @hp = hp
-    @armor = armor
+  def initialize(input_name, input_armor_rating, input_hp)
+    @name = input_name
+    @armor_rating = input_armor_rating
+    @hp = input_hp
   end
 
-  def role
-    return @role
+  def get_name
+    return @name
   end
 
-  def hp
+  def get_armor_rating
+    return @armor_rating
+  end
+
+  def get_hp
     return @hp
-  end
-
-  def armor
-    return @armor
-  end
-
-  def hp=(new_hp)
-    @hp = new_hp
-    return @hp
-  end
-
-  def armor=(new_armor)
-    @armor = new_armor
-    return @armor
   end
 
   def attack
-    return rand(1..20)
+    attack_roll = rand(1..20)
+    return attack_roll
   end
 
   def damage
-    return rand(1..6)
+    damage_roll = rand(1..6)
+    return damage_roll
   end
 
 end
 
 
-
-hero = Combatant.new("warrior", 6, 10)
-monster = Combatant.new("goblin", 6, 10)
+hero = Combatant.new("Dash", 10, 15)
+monster = Combatant.new("Goblin", 6, 10)
 
 def check_for_death(defender)
   if defender.hp <= 0
@@ -61,12 +50,3 @@ def turn(attacker, defender)
 end
 
 puts turn(hero, monster)
-
-
-
-
-
-
-
-
-
